@@ -1,4 +1,6 @@
-const TelegramBot = require("node-telegram-bot-api")
+const TelegramBot = require("node-telegram-bot-api");
+const express = require("express");
+const app = express();
 require("dotenv").config();
 
 const token = process.env.BOT_TOKEN;
@@ -22,3 +24,11 @@ bot.on("message", (msg) => {
         bot.sendMessage(chatid, "i am not able to understand you, please try again later.")
     }
 });
+
+app.get("/", (req, res) => {
+    res.send("bot is live...");
+})
+
+app.listen(3000, () => {
+    console.log("server is running on port 3000");
+})
